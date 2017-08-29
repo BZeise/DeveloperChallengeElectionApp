@@ -1,10 +1,10 @@
 (function () {
     "use strict";
-    
+
     angular.module("Election.App", [
         "Election.Component"
     ]);
-    
+
 })();
 
 //Election Component
@@ -23,7 +23,7 @@
         });
 
 		ElectionController.$inject = [ "$timeout" ];
-		
+
 		function ElectionController($timeout){
 			var ctrl = this;
 
@@ -57,7 +57,7 @@
 
 			};
 		}
-		
+
 })();
 
 //Candidate Component
@@ -76,10 +76,11 @@
         });
 
 		CandidateController.$inject = [];
-		
+
 		function CandidateController(){
 			var ctrl = this,
                 buildNewCandidate = function() {
+                  // console.log('in buildNewCandidate');
                     return {
                         votes: 0,
                         name: "",
@@ -90,6 +91,16 @@
             ctrl.newCandidate = null;
 
             //TODO Add code to add a new candidate
+            // ctrl.newCandidate = buildNewCandidate();
+            // ctrl.newCandidate[name] =
+            // ctrl.candidates.push(ctrl.newCandidate);
+            ctrl.$onSubmit = function() {
+              // if ($scope.text) {
+              //   $scope.list.push(this.text);
+              //   $scope.text = '';
+              // }
+              console.log('submit working');
+            };
 
             //TODO Add code to remove a candidate
 
@@ -98,7 +109,7 @@
                 ctrl.newCandidate = buildNewCandidate();
             };
 		}
-		
+
 })(window.angular);
 
 //Restult Component
@@ -113,9 +124,9 @@
                 candidates: "<"
             }
         });
-		
+
 		ResultsController.$inject = [];
-		
+
 		function ResultsController(){
 			var ctrl = this;
 
@@ -143,15 +154,15 @@
                 onVote: "&"
             }
         });
-		
+
 		VoteController.$inject = [];
 
 		function VoteController(){
 			var ctrl = this;
-			
+
             ctrl.castVote = function (candidate) {
                 ctrl.onVote({ $candidate: candidate });
             };
 		}
-		
+
 })();
