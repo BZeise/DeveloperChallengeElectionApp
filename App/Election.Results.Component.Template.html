@@ -3,25 +3,29 @@
 </h3>
 
 <table>
-    <thead>
-        <tr>
-            <th></th>
-            <th>Candidate</th>
-			<th>Votes</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="candidate in $ctrl.candidates">
-            <td>
-                <span ng-bind="$index + 1"></span>
-            </td>
-            <td>
-                <span ng-bind="candidate.name"></span>
-            </td>
-			<td>
-				<span ng-bind="candidate.votes"></span>
-			</td>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Candidate</th>
+      <th>Votes</th>
+      <th>Percentage of Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="candidate in $ctrl.candidates | orderBy: '-votes'">
+      <td>
+        <span ng-bind="$index + 1"></span>
+      </td>
+      <td>
+        <span ng-bind="candidate.name"></span>
+      </td>
+      <td>
+        <span ng-bind="candidate.votes"></span>
+      </td>
+      <td>
+        <span ng-bind="$ctrl.getCandidatePercentage(candidate.votes) | number:1">asdasd</span>
+      </td>
 
-        </tr>
-    </tbody>
+    </tr>
+  </tbody>
 </table>
