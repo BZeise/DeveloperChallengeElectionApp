@@ -75,7 +75,7 @@
                 onCreate: "&",
                 onDelete: "&",
                 // #3:  Adding in binding to access onCandidateCreate
-                onCandidateCreate: "&",
+                // onCandidateCreate: "&",
                 candidates: "<"
             }
         });
@@ -94,24 +94,45 @@
                         name: "",
                         color: null
                     };
-                },
-                onCreate = function() {
-                  ctrl.onCandidateCreate( candidateToAdd );
+                // },
+                // onCreate = function() {
+                //   ctrl.onCandidateCreate( candidateToAdd );
                 };
 
             ctrl.newCandidate = null;
 
             //TODO Add code to add a new candidate
             ctrl.addCandidate = function (candidate) {
-              // console.log('adding:', candidate);
               var candidateToAdd = buildNewCandidate();
               candidateToAdd.name = candidate.name;
               console.log('candidateToAdd is:', candidateToAdd);
               // #3:  Using onCandidateCreate defined above in ElectionController
-                ctrl.onCreate( candidateToAdd );
+              // ctrl.onCandidateCreate( candidateToAdd );
+              // ctrl.onCandidateCreate( { $candidate: candidate } );
+              // #3:  Ended up using the code FROM onCandidateCreate, without calling it
+              ctrl.candidates.push(candidateToAdd);
+              // this allows duplicate submissions
+              candidate.name = '';
             };
 
+          //   ctrl.addCandidate = function (candidate) {
+          //    // console.log('adding:', candidate);
+          //    ctrl.newCandidate = candidate;
+          //    console.log('candidateToAdd is:', ctrl.newCandidate);
+          //    // #3:  Using onCandidateCreate defined above in ElectionController
+           //
+          //    // #3:  Ended up using the code FROM onCandidateCreate, without calling it
+          //    ctrl.candidates.push(ctrl.newCandidate);
+          //     //  ctrl.onCreate( ctrl.newCandidate );
+          //  };
+
+
             //TODO Add code to remove a candidate
+            ctrl.deleteCandidate = function (candidate) {
+      				var index = ctrl.candidates.indexOf(candidate);
+      				ctrl.candidates.splice(index, 1);
+            };
+
 
             // $onInit is called once at component initialization
             ctrl.$onInit = function () {

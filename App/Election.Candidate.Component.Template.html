@@ -4,6 +4,10 @@
         <h3>Manage Candidates</h3>
         <ol>
 			<!--TODO ADD List of Candidate and the ability to remove-->
+      <li ng-repeat="candidate in $ctrl.candidates">
+        <span ng-bind="candidate.name"></span>
+        <button type="button" ng-click="$ctrl.deleteCandidate(candidate)"> Delete </button>
+      </li>
         </ol>
 
     </div>
@@ -15,8 +19,9 @@
                 <input type="text" placeholder="Enter Candidate Name" required ng-model="$ctrl.newCandidate.name"/>
             </div>
             <div>
-                <button type="button" ng-disabled="$ctrl.form.$invalid" ng-click="$ctrl.addCandidate($ctrl.newCandidate)"> + </button> 
+                <button type="button" ng-disabled="$ctrl.form.$invalid" ng-click="$ctrl.addCandidate($ctrl.newCandidate)"> + </button>
 				<!--TODO Implement a add candidate function-->
+        <!-- added the ng-click above -->
             </div>
         </div>
     </div>
