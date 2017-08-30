@@ -8,11 +8,13 @@
       <th></th>
       <th>Candidate</th>
       <th>Votes</th>
+      <!-- #1: header for new table column -->
       <th>Percentage of Total</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="candidate in $ctrl.candidates | orderBy: '-votes'">
+      <!-- #2:  Used a filter to dynamically sort candidate by descending amount of votes -->
       <td>
         <span ng-bind="$index + 1"></span>
       </td>
@@ -22,8 +24,11 @@
       <td>
         <span ng-bind="candidate.votes"></span>
       </td>
+      <!-- #1: adding new column data -->
       <td>
-        <span ng-bind="$ctrl.getCandidatePercentage(candidate.votes) | number:1">asdasd</span>
+        <span ng-bind="$ctrl.getCandidatePercentage(candidate.votes) | number:1">%</span>
+        <!-- #1: $ctrl.getCandidatePercentage was already created in Election.App.js and takes # of votes.
+        Used filter to limit decimal places.  Not sure how to display a percentage sign, but a custom defined filter would work.  -->
       </td>
 
     </tr>

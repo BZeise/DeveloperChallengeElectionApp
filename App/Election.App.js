@@ -30,6 +30,8 @@
 			ctrl.candidates = [];
 
 			ctrl.onCandidateCreate = function(candidate) {
+        console.log('you did it');
+        console.log('creating candidate:', candidate);
 				ctrl.candidates.push(candidate);
 			};
 
@@ -41,6 +43,7 @@
 			ctrl.onVote = function(candidate) {
 				var index = ctrl.candidates.indexOf(candidate);
 				ctrl.candidates[index].votes += 1;
+        // console.log('vote cast for', candidate);
 			};
 
 			ctrl.$onInit = function() {
@@ -71,11 +74,16 @@
             bindings: {
                 onCreate: "&",
                 onDelete: "&",
+                // #3:  Adding in binding to access onCandidateCreate
+                onCandidateCreate: "&",
                 candidates: "<"
             }
         });
 
 		CandidateController.$inject = [];
+
+
+    // function...
 
 		function CandidateController(){
 			var ctrl = this,
@@ -86,20 +94,21 @@
                         name: "",
                         color: null
                     };
+                },
+                onCreate = function() {
+                  ctrl.onCandidateCreate( candidateToAdd );
                 };
 
             ctrl.newCandidate = null;
 
             //TODO Add code to add a new candidate
-            // ctrl.newCandidate = buildNewCandidate();
-            // ctrl.newCandidate[name] =
-            // ctrl.candidates.push(ctrl.newCandidate);
-            ctrl.$onSubmit = function() {
-              // if ($scope.text) {
-              //   $scope.list.push(this.text);
-              //   $scope.text = '';
-              // }
-              console.log('submit working');
+            ctrl.addCandidate = function (candidate) {
+              // console.log('adding:', candidate);
+              var candidateToAdd = buildNewCandidate();
+              candidateToAdd.name = candidate.name;
+              console.log('candidateToAdd is:', candidateToAdd);
+              // #3:  Using onCandidateCreate defined above in ElectionController
+                ctrl.onCreate( candidateToAdd );
             };
 
             //TODO Add code to remove a candidate
