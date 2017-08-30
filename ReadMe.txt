@@ -6,3 +6,7 @@ Modify the Election App in the following ways (note firefox often works better t
 3. Allow the user to add a new candidate so that the candidate will show up in the results and user can cast votes (use the existing stub  Election.Candidate.Component).
 4. In the manage candidates component list the current candidates and give the user the ability to delete a candidate from the race.
 5. Implement Styling to make the application look more professional and user friendly
+
+Work completed by Ben Zeise
+
+Please see comments in code for more information on each step.
