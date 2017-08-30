@@ -1,28 +1,31 @@
 <div>
-    <div>
-        <!-- List of Candidates -->
-        <h3>Manage Candidates</h3>
-        <ol>
-			<!--TODO ADD List of Candidate and the ability to remove-->
+  <div>
+    <!-- List of Candidates -->
+    <h3>Manage Candidates</h3>
+    <ol>
+      <!--TODO ADD List of Candidate and the ability to remove-->
+      <!-- #4:  used ng-repeat to list all candidates  -->
       <li ng-repeat="candidate in $ctrl.candidates">
         <span ng-bind="candidate.name"></span>
         <button type="button" ng-click="$ctrl.deleteCandidate(candidate)"> Delete </button>
+        <!-- #4:  created $ctrl.deleteCandidate (which takes the current candidate as an argument)
+         to delete selected candidate -->
       </li>
-        </ol>
+    </ol>
 
-    </div>
-    <div>
-        <!-- Candidate Form -->
-        <h4>Add Candidate</h4>
-        <div ng-form="$ctrl.form">
-            <div>
-                <input type="text" placeholder="Enter Candidate Name" required ng-model="$ctrl.newCandidate.name"/>
-            </div>
-            <div>
-                <button type="button" ng-disabled="$ctrl.form.$invalid" ng-click="$ctrl.addCandidate($ctrl.newCandidate)"> + </button>
-				<!--TODO Implement a add candidate function-->
+  </div>
+  <div>
+    <!-- Candidate Form -->
+    <h4>Add Candidate</h4>
+    <div ng-form="$ctrl.form">
+      <div>
+        <input type="text" placeholder="Enter Candidate Name" required ng-model="$ctrl.newCandidate.name" />
+      </div>
+      <div>
+        <button type="button" ng-disabled="$ctrl.form.$invalid" ng-click="$ctrl.addCandidate($ctrl.newCandidate)"> + </button>
+        <!--TODO Implement a add candidate function-->
         <!-- added the ng-click above -->
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -72,23 +72,21 @@
             templateUrl: "App/Election.Candidate.Component.Template.html",
             controller: CandidateController,
             bindings: {
-                onCreate: "&",
-                onDelete: "&",
+                // onCreate: "&",
+                // onDelete: "&",
                 // #3:  Adding in binding to access onCandidateCreate
                 // onCandidateCreate: "&",
+                // okay, this didn't end up working as intended
+                // want to clarify this with Joe
                 candidates: "<"
             }
         });
 
 		CandidateController.$inject = [];
 
-
-    // function...
-
 		function CandidateController(){
 			var ctrl = this,
                 buildNewCandidate = function() {
-                  // console.log('in buildNewCandidate');
                     return {
                         votes: 0,
                         name: "",
@@ -97,6 +95,7 @@
                 // },
                 // onCreate = function() {
                 //   ctrl.onCandidateCreate( candidateToAdd );
+                // #3:  another attempt to access ctrl.onCandidateCreate
                 };
 
             ctrl.newCandidate = null;
@@ -109,22 +108,19 @@
               // #3:  Using onCandidateCreate defined above in ElectionController
               // ctrl.onCandidateCreate( candidateToAdd );
               // ctrl.onCandidateCreate( { $candidate: candidate } );
+              // okay, neither of these worked, and I'm really curious as to why
+
               // #3:  Ended up using the code FROM onCandidateCreate, without calling it
               ctrl.candidates.push(candidateToAdd);
-              // this allows duplicate submissions
               candidate.name = '';
+              // this implementation allows duplicate submissions
             };
 
           //   ctrl.addCandidate = function (candidate) {
-          //    // console.log('adding:', candidate);
           //    ctrl.newCandidate = candidate;
-          //    console.log('candidateToAdd is:', ctrl.newCandidate);
-          //    // #3:  Using onCandidateCreate defined above in ElectionController
-           //
-          //    // #3:  Ended up using the code FROM onCandidateCreate, without calling it
           //    ctrl.candidates.push(ctrl.newCandidate);
-          //     //  ctrl.onCreate( ctrl.newCandidate );
           //  };
+          //  this implementation does NOT allow duplicates
 
 
             //TODO Add code to remove a candidate
