@@ -1,10 +1,12 @@
 <h3>Cast Your Vote!</h3>
 
 <div>
-    <div ng-repeat="candidate in $ctrl.candidates">
+    <div ng-repeat="candidate in $ctrl.candidates" class="voteButton">
         <!--One button foreach candidate-->
-        <button type="button" ng-click="$ctrl.castVote(candidate)">
-            <span class="text-info" ng-bind="candidate.name"></span>
+        <!-- #5:  added bootstrap classes to buttons for styling -->
+        <button type="button" ng-click="$ctrl.castVote(candidate)" class="btn btn-info btn-lg">
+            <span ng-bind="candidate.name"></span>
+            <!-- removed class="text-info" because styling is done at button level now -->
         </button>
     </div>
 </div>

@@ -1,25 +1,30 @@
-	<div>
-		<div>
-			<!--Election Results Table-->
-			<tf-election-results 
+<!-- #5: used Bootstrap grid system and other built in classes for styling -->
+<div class="container">
+	<div class="row">
+		<!--Election Results Table-->
+		<div class="columnDiv col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2">
+			<tf-election-results
 				candidates="$ctrl.candidates">
 			</tf-election-results>
 		</div>
-		<div>
-			<div>
-				<!--Vote Component-->
-				<div>
-					<tf-election-vote
-						candidates="$ctrl.candidates"
-						on-vote="$ctrl.onVote($candidate)">
-					</tf-election-vote>
-				</div>
-				<!--Candidate Component-->
-				<div>
-					<tf-election-candidate
-						candidates="$ctrl.candidates">
-					</tf-election-candidate>
-				</div>
-			</div>
+		<!--end Election Results table-->
+	</div>
+	<div class="row">
+		<!--Vote Component-->
+		<div class="columnDiv col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2">
+			<tf-election-vote
+				candidates="$ctrl.candidates"
+				on-vote="$ctrl.onVote($candidate)">
+			</tf-election-vote>
+		</div>
+		<!--end Vote Component-->
+	</div>
+	<div class="row">
+		<!--Candidate Component-->
+		<div class="columnDiv col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2">
+			<tf-election-candidate
+				candidates="$ctrl.candidates">
+			</tf-election-candidate>
 		</div>
 	</div>
+</div>
